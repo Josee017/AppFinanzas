@@ -1,0 +1,12 @@
+[build]
+  # Directory that contains the deploy-ready HTML files and assets
+  publish = "dist"
+  
+  # Build command (optional - Netlify will auto-detect from package.json)
+  command = "npm run build"
+
+# Redirect all routes to index.html for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
