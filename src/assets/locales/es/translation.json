@@ -1,0 +1,129 @@
+{
+    "welcome": "Bienvenido a FinanceFlow",
+    "tagline": "Tu gestor de finanzas offline-first",
+    "common": {
+        "loading": "Cargando...",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "add": "Añadir",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "back": "Volver",
+        "please_enter_name": "Por favor ingrese un nombre",
+        "please_enter_amount": "Por favor ingrese un monto",
+        "save_success": "Guardado exitosamente",
+        "save_error": "Error al guardar",
+        "view_all": "Ver Todo",
+        "income": "Ingreso",
+        "expense": "Gasto",
+        "confirm_delete_message": "¿Estás seguro?",
+        "no_wallets": "No se encontraron billeteras. Añade una para comenzar."
+    },
+    "auth": {
+        "login": "Iniciar Sesión",
+        "logout": "Cerrar Sesión",
+        "email": "Correo",
+        "password": "Contraseña"
+    },
+    "tabs": {
+        "home": "Inicio",
+        "transactions": "Transacciones",
+        "wallets": "Billeteras",
+        "categories": "Categorías",
+        "statistics": "Estadísticas",
+        "profile": "Perfil"
+    },
+    "dashboard": {
+        "title": "Panel Principal",
+        "total_balance": "Balance Total",
+        "income_month": "Ingresos (Mes)",
+        "expenses_month": "Gastos (Mes)",
+        "recent_transactions": "Transacciones Recientes",
+        "no_transactions": "No hay transacciones aún.",
+        "updated_today": "Actualizado hoy"
+    },
+    "transactions": {
+        "title": "Transacciones",
+        "add_title": "Añadir Transacción",
+        "edit_title": "Editar Transacción",
+        "amount": "Monto",
+        "description": "Descripción",
+        "date": "Fecha",
+        "type": "Tipo",
+        "income": "Ingreso",
+        "expense": "Gasto",
+        "select_wallet": "Seleccionar Billetera",
+        "select_category": "Seleccionar Categoría"
+    },
+    "wallets": {
+        "title": "Billeteras",
+        "my_wallets": "Mis Billeteras",
+        "add_wallet": "Añadir Billetera",
+        "edit_wallet": "Editar Billetera",
+        "wallet_name": "Nombre de Billetera",
+        "initial_balance": "Balance Inicial",
+        "currency": "Moneda",
+        "type": "Tipo",
+        "types": {
+            "checking": "Cuenta Corriente",
+            "savings": "Ahorros",
+            "credit_card": "Tarjeta de Crédito",
+            "cash": "Efectivo"
+        }
+    },
+    "categories": {
+        "title": "Categorías",
+        "my_categories": "Mis Categorías",
+        "add_category": "Añadir Categoría",
+        "edit_category": "Editar Categoría",
+        "category_name": "Nombre de Categoría",
+        "icon": "Icono",
+        "icons": {
+            "cart": "Carrito",
+            "home": "Casa",
+            "car": "Auto",
+            "travel": "Viajes",
+            "utility": "Servicios",
+            "chart": "Gráfico"
+        },
+        "no_categories": "No se encontraron categorías."
+    },
+    "statistics": {
+        "expenses_by_category": "Gastos por Categoría",
+        "income_by_category": "Ingresos por Categoría",
+        "no_data": "No hay datos disponibles"
+    },
+    "profile": {
+        "title": "Perfil",
+        "settings": "Ajustes",
+        "dark_mode": "Modo Oscuro",
+        "language": "Idioma",
+        "select_language": "Seleccionar Idioma",
+        "english": "Inglés",
+        "spanish": "Español"
+    },
+    "cyber": {
+        "system_version": "Gestor de Finanzas",
+        "abort_session": "Cerrar Sesión",
+        "access": "Bienvenido",
+        "secure_login": "Iniciar Sesión",
+        "identity": "Correo Electrónico",
+        "passcode": "Contraseña",
+        "initialize_link": "Entrar",
+        "no_signal": "¿No tienes cuenta?",
+        "establish_new": "Regístrate aquí",
+        "new_user": "Crear Cuenta",
+        "reg_protocol": "Registro de Usuario",
+        "designation": "Correo Electrónico",
+        "secret_key": "Contraseña",
+        "execute_signup": "Registrarse",
+        "already_system": "¿Ya tienes cuenta?",
+        "access_login": "Inicia Sesión",
+        "short_home": "Inicio",
+        "short_txns": "Trans",
+        "short_wallets": "Billet",
+        "short_cats": "Categ",
+        "short_stats": "Estad",
+        "short_id": "Perfil"
+    }
+}

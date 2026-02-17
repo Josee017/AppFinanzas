@@ -1,0 +1,97 @@
+{
+  "welcome": "Welcome to FinanceFlow",
+  "tagline": "Your offline-first finance manager",
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "please_enter_name": "Please enter a name",
+    "please_enter_amount": "Please enter an amount",
+    "save_success": "Saved successfully",
+    "save_error": "Failed to save"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password"
+  },
+  "tabs": {
+    "home": "Home",
+    "transactions": "Transactions",
+    "wallets": "Wallets",
+    "categories": "Categories",
+    "statistics": "Statistics",
+    "profile": "Profile"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "total_balance": "Total Balance",
+    "income_month": "Income (Month)",
+    "expenses_month": "Expenses (Month)",
+    "recent_transactions": "Recent Transactions",
+    "no_transactions": "No transactions yet.",
+    "updated_today": "Updated today"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "add_title": "Add Transaction",
+    "edit_title": "Edit Transaction",
+    "amount": "Amount",
+    "description": "Description",
+    "date": "Date",
+    "type": "Type",
+    "income": "Income",
+    "expense": "Expense",
+    "select_wallet": "Select Wallet",
+    "select_category": "Select Category"
+  },
+  "wallets": {
+    "title": "Wallets",
+    "my_wallets": "My Wallets",
+    "add_wallet": "Add Wallet",
+    "edit_wallet": "Edit Wallet",
+    "wallet_name": "Wallet Name",
+    "initial_balance": "Initial Balance",
+    "currency": "Currency",
+    "type": "Type",
+    "types": {
+      "checking": "Checking",
+      "savings": "Savings",
+      "credit_card": "Credit Card",
+      "cash": "Cash"
+    }
+  },
+  "categories": {
+    "title": "Categories",
+    "my_categories": "My Categories",
+    "add_category": "Add Category",
+    "edit_category": "Edit Category",
+    "category_name": "Category Name",
+    "icon": "Icon",
+    "icons": {
+      "cart": "Cart",
+      "home": "Home",
+      "car": "Car",
+      "travel": "Travel",
+      "utility": "Utility",
+      "chart": "Chart"
+    }
+  },
+  "statistics": {
+    "expenses_by_category": "Expenses by Category",
+    "income_by_category": "Income by Category",
+    "no_data": "No data available"
+  },
+  "profile": {
+    "title": "Profile",
+    "settings": "Settings",
+    "dark_mode": "Dark Mode",
+    "language": "Language",
+    "select_language": "Select Language"
+  }
+}
