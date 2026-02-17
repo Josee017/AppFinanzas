@@ -36,8 +36,7 @@ const _create = async (): Promise<FinanceDatabase> => {
         name: 'financeflow_db_v3',
         storage: wrappedValidateAjvStorage({
             storage: getRxStorageDexie()
-        }),
-        ignoreDuplicate: true
+        })
     });
 
     console.log('Database created');
