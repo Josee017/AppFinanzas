@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación Oficial - Finance Flow | José Luis Hurtado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0a0a',
+                            gray: '#1a1a1a',
+                            cyan: '#00ffff',
+                            pink: '#ff00ff',
+                            purple: '#9d00ff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ffff;
+        }
+        
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Syntax Highlighting Mock */
+        .code-block {
+            background: #0d0d0d;
+            border-left: 3px solid #00ffff;
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-300 font-sans antialiased selection:bg-brand-pink selection:text-white">
+
+    <!-- Navbar Mobile -->
+    <nav class="lg:hidden glass-panel fixed top-0 w-full z-50 px-4 py-3 flex justify-between items-center border-b border-gray-800">
+        <div class="font-bold text-xl tracking-tighter text-white">FINANCE<span class="text-brand-cyan">FLOW</span></div>
+        <button id="menu-btn" class="text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </nav>
+
+    <div class="flex min-h-screen pt-16 lg:pt-0">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 bg-[#0f0f0f] border-r border-gray-800 flex flex-col">
+            <div class="p-6 border-b border-gray-800">
+                <h1 class="font-bold text-2xl tracking-tighter text-white">FINANCE<span class="text-brand-cyan">FLOW</span></h1>
+                <p class="text-xs text-gray-500 mt-1">v1.0.0 • Offline First</p>
+            </div>
+            
+            <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+                <!-- Group 1 -->
+                <div class="px-3 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">Introducción</div>
+                <a href="#vision-general" class="nav-link flex items-center px-3 py-2 text-sm font-medium rounded-md text-brand-cyan bg-gray-900 group">
+                    <span class="truncate">Visión General</span>
+                </a>
+                <a href="#manual-usuario" class="nav-link flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white group">
+                    <span class="truncate">Manual de Usuario</span>
+                </a>
+
+                <!-- Group 2 -->
+                <div class="mt-6 px-3 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">Arquitectura</div>
+                <a href="#stack-tecnologico" class="nav-link flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white group">
+                    <span class="truncate">Stack Tecnológico</span>
+                </a>
+                <a href="#base-datos" class="nav-link flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white group">
+                    <span class="truncate">Base de Datos (RxDB)</span>
+                </a>
+                <a href="#flujo-datos" class="nav-link flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white group">
+                    <span class="truncate">Flujo de Datos</span>
+                </a>
+
+                <!-- Group 3 -->
+                <div class="mt-6 px-3 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">Ayuda</div>
+                <a href="#troubleshooting" class="nav-link flex items-center px-3 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-800 hover:text-white group">
+                    <span class="truncate">Solución de Errores</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-gray-800">
+                <a href="https://github.com/Josee017/AppFinanzas" target="_blank" class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors group">
+                    <svg class="w-5 h-5 group-hover:text-brand-cyan transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>Ver Repositorio</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lg:pl-64 flex-1 w-full max-w-5xl mx-auto p-6 lg:p-12">
+            
+            <!-- Section: Visión General -->
+            <section id="vision-general" class="mb-16 scroll-mt-24">
+                <div class="flex flex-wrap items-center gap-4 mb-4">
+                    <div class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-brand-cyan uppercase bg-cyan-900/20 rounded-full border border-cyan-900/50">
+                        Documentación Técnica
+                    </div>
+                    <div class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-brand-pink uppercase bg-pink-900/20 rounded-full border border-pink-900/50">
+                        v1.0.0
+                    </div>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
+                    Finance <span class="gradient-text">Flow</span>
+                </h1>
+                
+                <p class="text-xl text-gray-400 mb-8 leading-relaxed max-w-3xl">
+                    Una aplicación de gestión de finanzas personales diseñada bajo el modelo <strong>"Offline-First"</strong>. Prioriza la operación local sin internet, sincronizando datos automáticamente con la nube cuando la conexión se restablece.
+                </p>
+
+                <div class="flex flex-wrap gap-4 mb-12">
+                    <a href="https://jhpfinanzasapp.netlify.app/login" target="_blank" class="px-6 py-3 bg-brand-cyan hover:bg-cyan-400 text-black font-bold rounded-lg transition-colors flex items-center gap-2">
+                        <span>Ver Aplicación (Demo)</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                    <a href="https://github.com/Josee017/AppFinanzas" target="_blank" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg border border-gray-700 transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <span>Código Fuente</span>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-panel p-6 rounded-xl">
+                        <div class="text-brand-pink mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Offline First</h3>
+                        <p class="text-gray-400 text-sm">Persistencia local robusta utilizando RxDB e IndexedDB. Tus datos siempre accesibles.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl">
+                        <div class="text-brand-cyan mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Multiplataforma</h3>
+                        <p class="text-gray-400 text-sm">Web App progresiva y App Nativa Android gracias a Ionic Framework y Capacitor.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl">
+                        <div class="text-brand-purple mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Cyberpunk UI</h3>
+                        <p class="text-gray-400 text-sm">Interfaz moderna con modo oscuro profundo, acentos neón y glassmorphism.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-gray-800 my-12">
+
+            <!-- Section: Manual de Usuario -->
+            <section id="manual-usuario" class="mb-16 scroll-mt-24">
+                <h2 class="text-3xl font-bold text-white mb-6">Manual de Usuario</h2>
+                
+                <div class="space-y-8">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-brand-cyan mb-3">1. Primeros Pasos</h3>
+                            <p class="text-gray-400 mb-4">
+                                Al iniciar, lo primero es configurar tu entorno financiero. La aplicación necesita saber dónde tienes el dinero y en qué lo gastas.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-400 space-y-2 ml-2">
+                                <li>Ve a la pestaña <strong>Billeteras</strong> y crea cuentas (ej. "Efectivo", "Banco").</li>
+                                <li>Ve a <strong>Categorías</strong> y define tus gastos (ej. "Comida", "Transporte").</li>
+                            </ul>
+                        </div>
+                        <div class="w-full md:w-1/3 bg-gray-900 rounded-lg border border-gray-800 p-4 flex items-center justify-center">
+                            <span class="text-gray-600 text-sm font-mono">[UI: Listado de Billeteras]</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-brand-pink mb-3">2. Registrando Transacciones</h3>
+                            <p class="text-gray-400 mb-4">
+                                Para registrar un movimiento financiero:
+                            </p>
+                            <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-2 bg-gray-900/50 p-4 rounded-lg border border-gray-800">
+                                <li>Pulsa el botón flotante <strong>"+"</strong>.</li>
+                                <li>Selecciona <strong>Ingreso</strong> o <strong>Gasto</strong>.</li>
+                                <li>Elige la <strong>Billetera</strong> de origen/destino.</li>
+                                <li>Elige la <strong>Categoría</strong> (se filtran según el tipo).</li>
+                                <li>Ingresa monto, fecha y nota.</li>
+                                <li>Pulsa <strong>Guardar</strong>.</li>
+                            </ol>
+                            <p class="mt-3 text-sm text-gray-500 italic">Nota: Si estás offline, verás un icono de sincronización pendiente.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-gray-800 my-12">
+
+            <!-- Section: Stack Tecnológico -->
+            <section id="stack-tecnologico" class="mb-16 scroll-mt-24">
+                <h2 class="text-3xl font-bold text-white mb-6">Stack Tecnológico</h2>
+                <div class="overflow-hidden rounded-lg border border-gray-800">
+                    <table class="min-w-full divide-y divide-gray-800 bg-gray-900/30">
+                        <thead class="bg-gray-900">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Capa</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Tecnología</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Detalles</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Frontend</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-brand-cyan">React + TypeScript</td>
+                                <td class="px-6 py-4 text-sm text-gray-400">Lógica robusta y tipado estático.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">UI Framework</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-brand-cyan">Ionic + Tailwind</td>
+                                <td class="px-6 py-4 text-sm text-gray-400">Componentes móviles nativos y estilos utilitarios.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Estado</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-brand-pink">Zustand</td>
+                                <td class="px-6 py-4 text-sm text-gray-400">Gestión de estado global ligero.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Base de Datos</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-brand-pink">RxDB (Dexie/IndexedDB)</td>
+                                <td class="px-6 py-4 text-sm text-gray-400">DB NoSQL en cliente. "Offline First".</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Backend/Auth</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-brand-purple">Supabase</td>
+                                <td class="px-6 py-4 text-sm text-gray-400">Auth, DB PostgreSQL y Storage en la nube.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section: Arquitectura y Datos -->
+            <section id="base-datos" class="mb-16 scroll-mt-24">
+                <h2 class="text-3xl font-bold text-white mb-6">Arquitectura de Datos (RxDB)</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-[#0f0f0f] p-6 rounded-lg border border-gray-800">
+                        <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-green-500"></span> Colecciones Locales
+                        </h4>
+                        <ul class="space-y-3 text-sm text-gray-400">
+                            <li class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-brand-cyan font-mono">profiles</span>
+                                <span>Datos de usuario, moneda, idioma</span>
+                            </li>
+                            <li class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-brand-cyan font-mono">wallets</span>
+                                <span>Cuentas y balances</span>
+                            </li>
+                            <li class="flex justify-between border-b border-gray-800 pb-2">
+                                <span class="text-brand-cyan font-mono">categories</span>
+                                <span>Tipos de gastos/ingresos</span>
+                            </li>
+                            <li class="flex justify-between pb-2">
+                                <span class="text-brand-cyan font-mono">transactions</span>
+                                <span>Movimientos financieros</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-[#0f0f0f] p-6 rounded-lg border border-gray-800">
+                        <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            Componentes Críticos
+                        </h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-white text-sm font-semibold">src/lib/rxdb.ts</p>
+                                <p class="text-xs text-gray-500">Inicializa la DB singleton y previene duplicados.</p>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-semibold">src/lib/schemas.ts</p>
+                                <p class="text-xs text-gray-500">Define validación estricta JSON Schema.</p>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-semibold">src/lib/store.ts</p>
+                                <p class="text-xs text-gray-500">Capa reactiva (Zustand) sobre RxDB.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-block p-4 rounded-lg overflow-x-auto text-sm text-gray-300">
+                    <div class="text-gray-500 mb-2">// Ejemplo de Flujo de Datos: Crear Transacción</div>
+                    <pre>
+1. UI (AddTransaction.tsx) -> Llama a addTransaction()
+2. Store (Zustand)         -> Ejecuta db.transactions.insert()
+3. RxDB                    -> Valida Schema & Guarda en IndexedDB
+4. UI                      -> Recibe actualización reactiva
+5. Background              -> Sincronización con Supabase (Pending)</pre>
+                </div>
+            </section>
+
+            <hr class="border-gray-800 my-12">
+
+            <!-- Section: Troubleshooting -->
+            <section id="troubleshooting" class="mb-24 scroll-mt-24">
+                <h2 class="text-3xl font-bold text-white mb-6">Solución de Errores Comunes</h2>
+                
+                <div class="space-y-4">
+                    <!-- Error 1 -->
+                    <details class="group bg-gray-900 rounded-lg border border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer p-4">
+                            <span class="font-medium text-red-400">Error DB9: ignoreDuplicate not allowed</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="text-gray-400 px-4 pb-4">
+                            <p class="mb-2 text-sm"><strong>Causa:</strong> RxDB v14+ no permite <code>ignoreDuplicate: true</code> en producción.</p>
+                            <p class="text-sm"><strong>Solución:</strong> Eliminar esa propiedad en <code>src/lib/rxdb.ts</code>. El patrón Singleton ya maneja esto.</p>
+                        </div>
+                    </details>
+
+                    <!-- Error 2 -->
+                    <details class="group bg-gray-900 rounded-lg border border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer p-4">
+                            <span class="font-medium text-yellow-400">Netlify 404 en rutas (Refresh)</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="text-gray-400 px-4 pb-4">
+                            <p class="mb-2 text-sm"><strong>Causa:</strong> SPA Routing no configurado en servidor estático.</p>
+                            <p class="text-sm"><strong>Solución:</strong> Crear <code>netlify.toml</code> con redirección <code>/* -> /index.html</code>.</p>
+                        </div>
+                    </details>
+
+                    <!-- Error 3 -->
+                    <details class="group bg-gray-900 rounded-lg border border-gray-800">
+                        <summary class="flex justify-between items-center cursor-pointer p-4">
+                            <span class="font-medium text-brand-cyan">Usuario "atrapado" en Registro</span>
+                            <span class="transition group-open:rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="text-gray-400 px-4 pb-4">
+                            <p class="mb-2 text-sm"><strong>Causa:</strong> Condición de carrera entre AuthContext y React Router.</p>
+                            <p class="text-sm"><strong>Solución:</strong> Usar <code>window.location.href</code> en lugar de <code>navigate()</code> tras el registro para forzar una recarga limpia.</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 bg-black py-8 text-center text-sm text-gray-500 lg:pl-64">
+        <p>&copy; 2026 Finance Flow. Desarrollado por <span class="text-brand-cyan">José Luis Hurtado</span>.</p>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        
+        menuBtn.addEventListener('click', () => {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+
+        // Close sidebar on link click (mobile)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+                
+                // Active state styling
+                document.querySelectorAll('.nav-link').forEach(l => {
+                    l.classList.remove('bg-gray-900', 'text-brand-cyan');
+                    l.classList.add('text-gray-300');
+                });
+                link.classList.remove('text-gray-300');
+                link.classList.add('bg-gray-900', 'text-brand-cyan');
+            });
+        });
+    </script>
+</body>
+</html>
